@@ -1,0 +1,49 @@
+/* Responsivo (mobile-bootstrap) */
+/* Tela grande */
+@media (min-width: 768px) {
+	.panel-default {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.alert {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+}
+
+.navbar {
+	background-color: #eeeeec;
+	border: #eeeeec 1px solid;
+}
+
+.navbar-brand {
+	padding-top: 12px;
+}
+
+.aw-link-panel {
+	float: right;
+	padding: 0px;
+}
+
+.aw-title-panel {
+	float: left;
+	padding-top: 2px;
+	font-weight: bold;	
+}
+
+.copyright {
+	padding: 5px 0;
+	background-color: #2e3436;
+	color: #ffffff;
+	border: #2e3436 1px solid;
+	border-radius: 0 0 20px 20px;
+}
+
+.copyright p {
+	margin: 0; 
+}
+
+.copyright p:hover {
+	color: #00ff10;
+}
