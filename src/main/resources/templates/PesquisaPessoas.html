@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-	<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Pesquisa de pessoas</title>
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-	</head>
-	<body>
-		<nav class="navbar navbar-inverse navbar-static-top">
-			<div class="container-fluid">
-				<div class="navbar-header ">
-					<a class="navbar-brand" href="/pessoas"> <img alt="Cadastro de Pessoa"
-						src="/images/cds-logo.png" title="Página inicial" />
-					</a>
-				</div>
-			</div>
-		</nav>
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
 	
+	<head>
+		<title>Pesquisa de pessoas</title>
+	</head>
+	
+	<section layout:fragment="conteudo">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h1 class="panel-title">Pesquisa de pessoas</h1>
+				<div class="clearfix">
+					<h1 class="panel-title aw-title-panel">Pesquisa de pessoas</h1>
+					<a class="btn btn-link aw-link-panel" href="/pessoas/novo">Novo cadastro</a>
+				</div>
 			</div>
-	
+		
 			<div class="panel-body">
 				<table class="table table-bordered table-striped">
 					<thead>
@@ -45,20 +37,7 @@
 					</tbody>
 				</table>
 			</div>
+			
 		</div>
-	
-		<script type="text/javascript" src="/js/jquery-2.2.0.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/jquery-1.2.6.pack.js"></script>
-		<script type="text/javascript"
-			src="/js/jquery.maskedinput-1.1.4.pack.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#cpf").mask("999.999.999-99");
-			});
-			$(document).ready(function() {
-				$("#telefone").mask("(99) 99999-9999");
-			});
-		</script>
-	</body>
+	</section>
 </html>

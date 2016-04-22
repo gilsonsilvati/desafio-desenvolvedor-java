@@ -1,25 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+	
 	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>:: CDS | Tecnologia a seu favor</title>
-		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<title>Cadastro de pessoas</title>
 	</head>
-	<body>
-		<nav class="navbar navbar-inverse navbar-static-top">
-			<div class="container-fluid">
-				<div class="navbar-header ">
-					<a class="navbar-brand" href="#">
-						<img alt="Cadastro de Pessoa" src="/images/cds-logo.png" title="Página inicial" />
-					</a>
-				</div>
-			</div>
-		</nav>
-		
+	
+	<section layout:fragment="conteudo">
 		<form class="form-horizontal" method="POST" action="/pessoas">
 			<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
 				<span th:text="${mensagem}"></span>
@@ -27,8 +16,11 @@
 		
 	    	<div class="panel panel-default">
 	    		<div class="panel-heading">
-	    			<h1 class="panel-title">Novo cadastro de pessoa</h1>
-	    		</div>
+					<div class="clearfix">
+						<h1 class="panel-title aw-title-panel">Novo cadastro</h1>
+						<a class="btn btn-link aw-link-panel" href="/pessoas">Voltar para pesquisa</a>
+					</div>
+				</div>
 	    		
 	    		<div class="panel-body">
 	    			<div class="form-group">
@@ -124,18 +116,5 @@
 				</div>
 	    	</div>
 	    </form>
-		
-		<script type="text/javascript" src="/js/jquery-2.2.0.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/jquery-1.2.6.pack.js"></script>
-		<script type="text/javascript" src="/js/jquery.maskedinput-1.1.4.pack.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("#cpf").mask("999.999.999-99");
-			});
-			$(document).ready(function(){
-				$("#telefone").mask("(99) 99999-9999");
-			});
-		</script>
-	</body>
+	</section>
 </html>

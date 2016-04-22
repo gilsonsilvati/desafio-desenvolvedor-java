@@ -2,8 +2,8 @@ package br.com.cds.model;
 
 public enum Status {
 
-	ATIVO("Ativo"),
-	INATIVO("Inativo");
+	INATIVO("Inativo"),
+	ATIVO("Ativo");
 	
 	private String descricao;
 	
