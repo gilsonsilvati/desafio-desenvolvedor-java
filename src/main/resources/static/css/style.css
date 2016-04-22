@@ -21,6 +21,11 @@
 	padding-top: 12px;
 }
 
+.aw-required > .control-label:after {
+	content: " *";
+	color: #ee1d00;
+}
+
 .aw-link-panel {
 	float: right;
 	padding: 0px;
