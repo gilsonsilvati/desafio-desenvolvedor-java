@@ -9,7 +9,7 @@
 	</head>
 	
 	<section layout:fragment="conteudo">
-		<form class="form-horizontal" method="POST" action="/pessoas" th:object="${pessoa}">
+		<form class="form-horizontal" method="POST" th:action="@{/pessoas}" th:object="${pessoa}">
 			<div layout:include="MensagemGeral"></div>
 			<div layout:include="MensagemErro"></div>
 		
@@ -17,7 +17,7 @@
 	    		<div class="panel-heading">
 					<div class="clearfix">
 						<h1 class="panel-title aw-title-panel">Novo cadastro</h1>
-						<a class="btn btn-link aw-link-panel" href="/pessoas">Voltar para pesquisa</a>
+						<a class="btn btn-link aw-link-panel" th:href="@{/pessoas}">Voltar para pesquisa</a>
 					</div>
 				</div>
 	    		

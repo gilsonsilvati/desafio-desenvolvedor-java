@@ -15,11 +15,27 @@
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h1 class="panel-title aw-title-panel">Pesquisa de pessoas</h1>
-					<a class="btn btn-link aw-link-panel" href="/pessoas/novo">Novo cadastro</a>
+					<a class="btn btn-link aw-link-panel" th:href="@{/pessoas/novo}">Novo cadastro</a>
 				</div>
 			</div>
-		
+			
 			<div class="panel-body">
+				<form method="GET" class="form-horizontal" th:action="@{/pessoas}" th:object="${filtro}">
+					<div class="form-group">
+						<div class="col-sm-4">
+							<div class="input-group">
+								<input class="form-control" placeholder="Qual pessoa você está procurando?"
+									autofocus="autofocus" th:field="*{nome}" />
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-danger">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
+			
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>

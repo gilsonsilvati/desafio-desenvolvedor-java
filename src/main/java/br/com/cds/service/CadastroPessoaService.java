@@ -1,5 +1,7 @@
 package br.com.cds.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.cds.model.Pessoa;
 import br.com.cds.model.Status;
 import br.com.cds.repository.Pessoas;
+import br.com.cds.repository.filter.PessoaFilter;
 
 @Service
 public class CadastroPessoaService {
@@ -32,6 +35,11 @@ public class CadastroPessoaService {
 		pessoas.save(pessoa);
 		
 		return Status.ATIVO.getDescricao();
+	}
+	
+	public List<Pessoa> filtrar(PessoaFilter filtro) {
+		String nome = filtro.getNome() == null ? "%" : filtro.getNome(); 
+		return pessoas.findByNomeContaining(nome);
 	}
 	
 }

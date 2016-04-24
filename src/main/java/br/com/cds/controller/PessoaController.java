@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.cds.model.Pessoa;
 import br.com.cds.model.Status;
 import br.com.cds.model.UF;
-import br.com.cds.repository.Pessoas;
+import br.com.cds.repository.filter.PessoaFilter;
 import br.com.cds.service.CadastroPessoaService;
 
 @Controller
@@ -26,9 +26,6 @@ import br.com.cds.service.CadastroPessoaService;
 public class PessoaController {
 	
 	private static final String CADASTRO_VIEW = "CadastroPessoa";
-	
-	@Autowired
-	private Pessoas pessoas;
 	
 	@Autowired
 	private CadastroPessoaService cadastroPessoaService;
@@ -57,11 +54,11 @@ public class PessoaController {
 	}
 	
 	@RequestMapping
-	public ModelAndView pesquisar() {
-		List<Pessoa> todos = pessoas.findAll();
+	public ModelAndView pesquisar(@ModelAttribute("filtro") PessoaFilter filtro) {
+		List<Pessoa> todos = cadastroPessoaService.filtrar(filtro);
+		
 		ModelAndView mv = new ModelAndView("PesquisaPessoas");
 		mv.addObject("pessoas", todos);
-		
 		return mv;
 	}
 	
