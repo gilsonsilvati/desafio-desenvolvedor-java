@@ -39,9 +39,9 @@
 							<td class="text-center" th:text="${pessoa.cpf}"></td>
 							<td class="text-center" th:text="${pessoa.telefone}"></td>
 							<td class="text-center" th:text="${{pessoa.dataNascimento}}"></td>
-							<td class="text-center">
+							<td class="text-center" th:attr="data-role=${pessoa.codigo}">
 								<span class="label" th:text="${pessoa.status.descricao}"
-	   								th:classappend="${#strings.toString(pessoa.status) == 'INATIVO' ? 'label-danger' : 'label-success'}"></span>
+	   								th:classappend="${pessoa.inativo ? 'label-danger' : 'label-success'}"></span>
 							</td>
 							
 							<td class="text-center">
@@ -54,6 +54,13 @@
 										th:attr="data-codigo=${pessoa.codigo}, data-nome=${pessoa.nome}"
 										title="Excluir" rel="tooltip" data-placement="top">
 									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+								
+								<a class="btn btn-link btn-xs js-atualizar-status" th:if="${pessoa.inativo}"
+										title="Ativar" rel="tooltip" data-placement="top"
+										th:attr="data-codigo=${pessoa.codigo}"
+										th:href="@{/pessoas/{codigo}/ativar(codigo=${pessoa.codigo})}">
+									<span class="glyphicon glyphicon-check"></span>
 								</a>
 							</td>
 						</tr>

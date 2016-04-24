@@ -23,23 +23,23 @@ $(function() {
 	$('.js-atualizar-status').on('click', function(event) {
 		event.preventDefault();
 		
-		var botaoReceber = $(event.currentTarget);
-		var urlReceber = botaoReceber.attr('href');
+		var botaoAtivar = $(event.currentTarget);
+		var urlAtivar = botaoAtivar.attr('href');
 		
 		var response = $.ajax({
-			url: urlReceber,
+			url: urlAtivar,
 			type: 'PUT'
 		});
 		
 		response.done(function(e) {
-			var codigoTitulo = botaoReceber.data('codigo');
-			$('[data-role=' + codigoTitulo + ']').html('<span class="label label-success">' + e + '</span>');
-			botaoReceber.hide();
+			var codigoPessoa = botaoAtivar.data('codigo');
+			$('[data-role=' + codigoPessoa + ']').html('<span class="label label-success">' + e + '</span>');
+			botaoAtivar.hide();
 		});
 		
 		response.fail(function(e) {
 			console.log(e);
-			alert('Erro recebendo cobrança');
+			alert('Erro ativando pessoa');
 		});
 		
 	});

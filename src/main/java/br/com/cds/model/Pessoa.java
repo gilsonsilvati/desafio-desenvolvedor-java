@@ -24,20 +24,42 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "pessoa")
 public class Pessoa {
 	
-	private Long codigo;
-	private String nome;
-	private String cpf;
-	private String telefone;
-	private String rg;
-	private String pai;
-	private String mae;
-	private UF uf;
-	private String municipio;
-	private Date dataNascimento;
-	private Status status;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long codigo;
+	
+	@NotBlank(message = "Campo nome é obrigatório")
+	private String nome;
+	
+	@NotBlank(message = "Campo cpf é obrigatório")
+	@CPF
+	private String cpf;
+	
+	private String telefone;
+	
+	private String rg;
+	
+	private String pai;
+	
+	@NotBlank(message = "Campo mãe é obrigatório")
+	@Size(max = 50, message = "Só é pertido 50 caracteres")
+	private String mae;
+	
+	@NotNull(message = "UF é obrigatório")
+	@Enumerated(EnumType.STRING)
+	private UF uf;
+	
+	@NotBlank(message = "Campo município é obrigatório")
+	private String municipio;
+	
+	@NotNull(message = "Data de nascimento é obrigatória")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date dataNascimento;
+	
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -45,7 +67,6 @@ public class Pessoa {
 		this.codigo = codigo;
 	}
 	
-	@NotBlank(message = "Campo nome é obrigatório")
 	public String getNome() {
 		return nome;
 	}
@@ -53,8 +74,6 @@ public class Pessoa {
 		this.nome = nome;
 	}
 	
-	@NotBlank(message = "Campo cpf é obrigatório")
-	@CPF
 	public String getCpf() {
 		return cpf;
 	}
@@ -83,8 +102,6 @@ public class Pessoa {
 		this.pai = pai;
 	}
 	
-	@NotBlank(message = "Campo mãe é obrigatório")
-	@Size(max = 50, message = "Só é pertido 50 caracteres")
 	public String getMae() {
 		return mae;
 	}
@@ -92,8 +109,6 @@ public class Pessoa {
 		this.mae = mae;
 	}
 	
-	@NotNull(message = "UF é obrigatório")
-	@Enumerated(EnumType.STRING)
 	public UF getUf() {
 		return uf;
 	}
@@ -101,7 +116,6 @@ public class Pessoa {
 		this.uf = uf;
 	}
 	
-	@NotBlank(message = "Campo município é obrigatório")
 	public String getMunicipio() {
 		return municipio;
 	}
@@ -109,9 +123,6 @@ public class Pessoa {
 		this.municipio = municipio;
 	}
 	
-	@NotNull(message = "Data de nascimento é obrigatória")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
@@ -119,12 +130,15 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	@Enumerated(EnumType.STRING)
 	public Status getStatus() {
 		return status;
 	}
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	
+	public boolean isInativo() {
+		return Status.INATIVO.equals(this.status);
 	}
 	
 	/* hashCode e equals personalizado */

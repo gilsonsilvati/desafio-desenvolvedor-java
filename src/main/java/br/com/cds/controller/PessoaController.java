@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -47,7 +48,7 @@ public class PessoaController {
 		
 		try {
 			cadastroPessoaService.salvar(pessoa);
-			attributes.addFlashAttribute("mensagem", "Cadastro efetuado com sucesso!");
+			attributes.addFlashAttribute("mensagem", "Cadastro salvo com sucesso!");
 			return "redirect:/pessoas/novo";
 		} catch (IllegalArgumentException e) {
 			errors.rejectValue("dataNascimento", null, e.getMessage());
@@ -77,6 +78,11 @@ public class PessoaController {
 		
 		attributes.addFlashAttribute("mensagem", "Pessoa excluída com sucesso!");
 		return "redirect:/pessoas";
+	}
+	
+	@RequestMapping(value = "/{codigo}/ativar", method = RequestMethod.PUT)
+	public @ResponseBody String ativar(@PathVariable Long codigo) {
+		return cadastroPessoaService.ativar(codigo);
 	}
 	
 	@ModelAttribute("todosUfPessoa")

@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.cds.model.Pessoa;
+import br.com.cds.model.Status;
 import br.com.cds.repository.Pessoas;
 
 @Service
@@ -23,6 +24,14 @@ public class CadastroPessoaService {
 
 	public void excluir(Long codigo) {
 		pessoas.delete(codigo);
+	}
+	
+	public String ativar(Long codigo) {
+		Pessoa pessoa = pessoas.findOne(codigo);
+		pessoa.setStatus(Status.ATIVO);
+		pessoas.save(pessoa);
+		
+		return Status.ATIVO.getDescricao();
 	}
 	
 }
