@@ -9,6 +9,8 @@
 	</head>
 	
 	<section layout:fragment="conteudo">
+		<div layout:include="MensagemGeral"></div>
+	
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="clearfix">
@@ -31,12 +33,41 @@
 						</tr>
 					</thead>
 					<tbody>
+						<tr th:each="pessoa : ${pessoas}" >
+							<td class="text-center" th:text="${pessoa.codigo}"></td>
+							<td th:text="${pessoa.nome}"></td>
+							<td class="text-center" th:text="${pessoa.cpf}"></td>
+							<td class="text-center" th:text="${pessoa.telefone}"></td>
+							<td class="text-center" th:text="${{pessoa.dataNascimento}}"></td>
+							<td class="text-center">
+								<span class="label" th:text="${pessoa.status.descricao}"
+	   								th:classappend="${#strings.toString(pessoa.status) == 'INATIVO' ? 'label-danger' : 'label-success'}"></span>
+							</td>
+							
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/pessoas/{codigo}(codigo=${pessoa.codigo})}"
+										title="Editar" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+										th:attr="data-codigo=${pessoa.codigo}, data-nome=${pessoa.nome}"
+										title="Excluir" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+							</td>
+						</tr>
+					
 						<tr>
-							<td colspan="7">Nunhuma pessoa encontrada!</td>
+							<td colspan="7" th:if="${#lists.isEmpty(pessoas)}">
+								Nunhuma pessoa encontrada!
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
+			
+			<div layout:include="DialogoConfirmacaoExclusao"></div>
 			
 		</div>
 	</section>

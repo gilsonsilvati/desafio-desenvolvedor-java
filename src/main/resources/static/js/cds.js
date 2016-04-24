@@ -1,8 +1,8 @@
 $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 	var button = $(event.relatedTarget);
 	
-	var codigoTitulo = button.data('codigo');
-	var descricaoTitulo = button.data('descricao');
+	var codigoPessoa = button.data('codigo');
+	var nomePessoa = button.data('nome');
 	
 	var modal = $(this);
 	var form = modal.find('form');
@@ -12,14 +12,13 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 		action += '/';
 	}
 	
-	form.attr('action', action + codigoTitulo);
+	form.attr('action', action + codigoPessoa);
 	
-	modal.find('.modal-body span').html('Tem certeza que deseja excluir o título <strong>' + descricaoTitulo + '</strong>?');
+	modal.find('.modal-body span').html('Tem certeza que deseja excluir a pessoa <strong>' + nomePessoa + '</strong>?');
 });
 
 $(function() {
 	$('[rel="tooltip"]').tooltip();
-	$('.js-currency').maskMoney({decimal: ',', thousands: '.', allowZero: true});
 	
 	$('.js-atualizar-status').on('click', function(event) {
 		event.preventDefault();

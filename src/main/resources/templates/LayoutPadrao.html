@@ -10,6 +10,7 @@
 		<title>:: CDS | Tecnologia a seu favor</title>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.min.css" />
 	</head>
 	<body>
 		<header layout:include="Cabecalho"></header>
@@ -20,17 +21,10 @@
 		
 		<footer layout:include="Rodape"></footer>
 		
-		<script type="text/javascript" src="/js/jquery-2.2.0.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/jquery-1.2.6.pack.js"></script>
-		<script type="text/javascript" src="/js/jquery.maskedinput-1.1.4.pack.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("#cpf").mask("999.999.999-99");
-			});
-			$(document).ready(function(){
-				$("#telefone").mask("(99) 99999-9999");
-			});
-		</script>
+		<script src="/js/jquery-2.2.0.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap-datepicker.min.js"></script>
+		<script src="/js/bootstrap-datepicker.pt-BR.min.js"></script>
+		<script src="/js/cds.js"></script>
 	</body>
 </html>

@@ -12,8 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -41,6 +45,7 @@ public class Pessoa {
 		this.codigo = codigo;
 	}
 	
+	@NotBlank(message = "Campo nome é obrigatório")
 	public String getNome() {
 		return nome;
 	}
@@ -48,6 +53,8 @@ public class Pessoa {
 		this.nome = nome;
 	}
 	
+	@NotBlank(message = "Campo cpf é obrigatório")
+	@CPF
 	public String getCpf() {
 		return cpf;
 	}
@@ -76,6 +83,8 @@ public class Pessoa {
 		this.pai = pai;
 	}
 	
+	@NotBlank(message = "Campo mãe é obrigatório")
+	@Size(max = 50, message = "Só é pertido 50 caracteres")
 	public String getMae() {
 		return mae;
 	}
@@ -83,6 +92,7 @@ public class Pessoa {
 		this.mae = mae;
 	}
 	
+	@NotNull(message = "UF é obrigatório")
 	@Enumerated(EnumType.STRING)
 	public UF getUf() {
 		return uf;
@@ -91,6 +101,7 @@ public class Pessoa {
 		this.uf = uf;
 	}
 	
+	@NotBlank(message = "Campo município é obrigatório")
 	public String getMunicipio() {
 		return municipio;
 	}
@@ -98,6 +109,7 @@ public class Pessoa {
 		this.municipio = municipio;
 	}
 	
+	@NotNull(message = "Data de nascimento é obrigatória")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	public Date getDataNascimento() {
