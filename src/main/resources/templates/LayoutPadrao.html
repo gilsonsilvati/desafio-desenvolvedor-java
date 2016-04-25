@@ -2,11 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	
 	<head>
 		<meta charset="UTF-8" />
+		
+		<!-- Reforçando utf-8 para  responsividade (mobile) -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<!-- Habilitando responsividade (mobile-bootstrap) -->
 		<meta name="viewport" content="width=device-width" />
+		
 		<title>:: CDS | Tecnologia a seu favor</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
@@ -22,6 +26,7 @@
 		<footer layout:include="Rodape"></footer>
 		
 		<script th:src="@{/js/jquery-2.2.0.min.js}"></script>
+		<script th:src="@{/js/jquery.maskedinput.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
 		<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
 		<script th:src="@{/js/bootstrap-datepicker.pt-BR.min.js}"></script>

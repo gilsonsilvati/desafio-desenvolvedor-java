@@ -52,7 +52,6 @@ public class Pessoa {
 	@NotBlank(message = "Campo município é obrigatório")
 	private String municipio;
 	
-	@NotNull(message = "Data de nascimento é obrigatória")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;

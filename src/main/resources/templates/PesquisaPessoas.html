@@ -35,59 +35,62 @@
 						</div>
 					</div>
 				</form>
-			
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th class="text-center col-md-1">#</th>
-							<th>Nome</th>
-							<th class="text-center col-md-2">CPF</th>
-							<th class="text-center col-md-2">Telefone</th>
-							<th class="text-center col-md-2">Data de nascimento</th>
-							<th class="text-center col-md-2">Status</th>
-							<th class="text-center col-md-1"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="pessoa : ${pessoas}" >
-							<td class="text-center" th:text="${pessoa.codigo}"></td>
-							<td th:text="${pessoa.nome}"></td>
-							<td class="text-center" th:text="${pessoa.cpf}"></td>
-							<td class="text-center" th:text="${pessoa.telefone}"></td>
-							<td class="text-center" th:text="${{pessoa.dataNascimento}}"></td>
-							<td class="text-center" th:attr="data-role=${pessoa.codigo}">
-								<span class="label" th:text="${pessoa.status.descricao}"
-	   								th:classappend="${pessoa.inativo ? 'label-danger' : 'label-success'}"></span>
-							</td>
-							
-							<td class="text-center">
-								<a class="btn btn-link btn-xs" th:href="@{/pessoas/{codigo}(codigo=${pessoa.codigo})}"
-										title="Editar" rel="tooltip" data-placement="top">
-									<span class="glyphicon glyphicon-pencil"></span>
-								</a>
+				
+				<!-- Responsive (mobile-bootstrap) -->
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th class="text-center col-md-1">#</th>
+								<th>Nome</th>
+								<th class="text-center col-md-2">CPF</th>
+								<th class="text-center col-md-2">Telefone</th>
+								<th class="text-center col-md-2">Data de nascimento</th>
+								<th class="text-center col-md-2">Status</th>
+								<th class="text-center col-md-1"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="pessoa : ${pessoas}" >
+								<td class="text-center" th:text="${pessoa.codigo}"></td>
+								<td th:text="${pessoa.nome}"></td>
+								<td class="text-center" th:text="${pessoa.cpf}"></td>
+								<td class="text-center" th:text="${pessoa.telefone}"></td>
+								<td class="text-center" th:text="${{pessoa.dataNascimento}}"></td>
+								<td class="text-center" th:attr="data-role=${pessoa.codigo}">
+									<span class="label" th:text="${pessoa.status.descricao}"
+		   								th:classappend="${pessoa.inativo ? 'label-danger' : 'label-success'}"></span>
+								</td>
 								
-								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-										th:attr="data-codigo=${pessoa.codigo}, data-nome=${pessoa.nome}"
-										title="Excluir" rel="tooltip" data-placement="top">
-									<span class="glyphicon glyphicon-remove"></span>
-								</a>
-								
-								<a class="btn btn-link btn-xs js-atualizar-status" th:if="${pessoa.inativo}"
-										title="Ativar" rel="tooltip" data-placement="top"
-										th:attr="data-codigo=${pessoa.codigo}"
-										th:href="@{/pessoas/{codigo}/ativar(codigo=${pessoa.codigo})}">
-									<span class="glyphicon glyphicon-check"></span>
-								</a>
-							</td>
-						</tr>
-					
-						<tr>
-							<td colspan="7" th:if="${#lists.isEmpty(pessoas)}">
-								Nunhuma pessoa encontrada!
-							</td>
-						</tr>
-					</tbody>
-				</table>
+								<td class="text-center">
+									<a class="btn btn-link btn-xs" th:href="@{/pessoas/{codigo}(codigo=${pessoa.codigo})}"
+											title="Editar" rel="tooltip" data-placement="top">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
+									
+									<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+											th:attr="data-codigo=${pessoa.codigo}, data-nome=${pessoa.nome}"
+											title="Excluir" rel="tooltip" data-placement="top">
+										<span class="glyphicon glyphicon-remove"></span>
+									</a>
+									
+									<a class="btn btn-link btn-xs js-atualizar-status" th:if="${pessoa.inativo}"
+											title="Ativar" rel="tooltip" data-placement="top"
+											th:attr="data-codigo=${pessoa.codigo}"
+											th:href="@{/pessoas/{codigo}/ativar(codigo=${pessoa.codigo})}">
+										<span class="glyphicon glyphicon-check"></span>
+									</a>
+								</td>
+							</tr>
+						
+							<tr>
+								<td colspan="7" th:if="${#lists.isEmpty(pessoas)}">
+									Nunhuma pessoa encontrada!
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			
 			<div layout:include="DialogoConfirmacaoExclusao"></div>
